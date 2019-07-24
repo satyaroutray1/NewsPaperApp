@@ -1,6 +1,8 @@
 Newspaper app
 -------------
 
+[![Join the chat at https://gitter.im/NewsPaperAppSR/community](https://badges.gitter.im/NewsPaperAppSR/community.svg)](https://gitter.im/NewsPaperAppSR/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 
 It fetches latest news. 
 It allows user to save articles to read later and  also has option to block the news from the source they do not want to see.
