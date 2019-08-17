@@ -21,7 +21,7 @@ public class HealthNewsFragment extends Fragment {
     private ArrayList urlList;
     private NewsAdapter mNewsAdapter;
 
-    private static final String REQUEST_URL ="https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=3f7d99cdbb004766892bd239a4c099be";
+    private static final String REQUEST_URL ="https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=" + MainActivity.API_KEY;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

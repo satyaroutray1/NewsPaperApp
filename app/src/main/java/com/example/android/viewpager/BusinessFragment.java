@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class BusinessFragment extends Fragment {
 
     private NewsAdapter mNewsAdapter;
-    private static final String REQUEST_URL ="https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=3f7d99cdbb004766892bd239a4c099be";
+    private static final String REQUEST_URL ="https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=" + MainActivity.API_KEY;
 
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {

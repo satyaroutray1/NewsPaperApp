@@ -25,7 +25,7 @@ public class HeadlinesFragment extends Fragment {
     private NewsAdapter mNewsAdapter;
     private TextView mEmptyStateTextView;
 
-    private static final String REQUEST_URL ="https://newsapi.org/v2/top-headlines?country=in&apiKey=3f7d99cdbb004766892bd239a4c099be";
+    private static final String REQUEST_URL ="https://newsapi.org/v2/top-headlines?country=in&apiKey=" + MainActivity.API_KEY;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
