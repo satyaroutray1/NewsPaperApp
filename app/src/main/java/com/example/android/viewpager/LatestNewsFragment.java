@@ -1,5 +1,8 @@
 package com.example.android.viewpager;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -7,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 public class LatestNewsFragment extends Fragment {
 
@@ -15,15 +19,25 @@ public class LatestNewsFragment extends Fragment {
         View rootView= inflater.inflate(R.layout.fragment_latest_news, container, false);
         ViewPager viewPager2 = (ViewPager) rootView.findViewById(R.id.viewpager2);
 
-        // Create an adapter that knows which fragment should be shown on each page
-        SecTabFragmentPagerAdapter adapter = new SecTabFragmentPagerAdapter(getContext(),getChildFragmentManager());
+        ConnectivityManager connMgr = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        // Set the adapter onto the view pager
-        viewPager2.setAdapter(adapter);
+        // Get details on the currently active default data network
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
-        TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.tabs2);
+        // If there is a network connection, fetch data
+        if (networkInfo != null && networkInfo.isConnected()) {
+            // Create an adapter that knows which fragment should be shown on each page
+            SecTabFragmentPagerAdapter adapter = new SecTabFragmentPagerAdapter(getContext(), getChildFragmentManager());
 
-        tabLayout.setupWithViewPager(viewPager2);
+            // Set the adapter onto the view pager
+            viewPager2.setAdapter(adapter);
+
+            TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.tabs2);
+
+            tabLayout.setupWithViewPager(viewPager2);
+        }else {
+            //Toast.makeText(getContext(), "t", Toast.LENGTH_SHORT).show();
+        }
         return rootView;
     }
 }

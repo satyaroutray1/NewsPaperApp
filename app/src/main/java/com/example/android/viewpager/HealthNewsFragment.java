@@ -25,7 +25,7 @@ public class HealthNewsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_tech_news, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_business_news, container, false);
 
         HealthNewsFragment.NewsAsyncTask task = new HealthNewsFragment.NewsAsyncTask();
         task.execute(REQUEST_URL);
