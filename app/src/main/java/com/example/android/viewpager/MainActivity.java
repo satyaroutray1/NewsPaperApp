@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     //Enter your API key
-    public static final String API_KEY = "";
+    public static final String API_KEY = "2b50b115f6fc41d889c67fd99d7ca6c8";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

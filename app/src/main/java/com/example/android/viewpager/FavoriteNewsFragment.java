@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.android.viewpager.Data.Contract;
 
@@ -19,6 +20,7 @@ public class FavoriteNewsFragment extends Fragment implements LoaderManager.Load
 
     private static final int LOADER = 0;
     private FavAdapter adapter;
+    private TextView mEmptyStateTextView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_favorite_news, container, false);
@@ -34,6 +36,11 @@ public class FavoriteNewsFragment extends Fragment implements LoaderManager.Load
 
             }
         });
+//when there is no saved news
+        mEmptyStateTextView = (TextView) rootView.findViewById(R.id.empty_view_fav);
+        listViewFav.setEmptyView(mEmptyStateTextView);
+
+        mEmptyStateTextView.setText("No favorite news yet");
 
         getLoaderManager().initLoader(LOADER, null, this).forceLoad();
         return rootView;
