@@ -20,5 +20,6 @@ Installation steps
 
 Updates on project
 -------------------
-17/08/2019
-Shows error message when internet connection is not there. App used to crash when opened without internet.
+17/08/2019</br>
+Shows error message when internet connection is not there. App used to crash when opened without internet.</br>
+Displays a message when there are no saved articles in favourite section.
