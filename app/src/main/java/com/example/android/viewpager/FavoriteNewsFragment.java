@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.android.viewpager.Data.Contract;
 
@@ -19,11 +20,13 @@ public class FavoriteNewsFragment extends Fragment implements LoaderManager.Load
 
     private static final int LOADER = 0;
     private FavAdapter adapter;
+    private TextView textView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_favorite_news, container, false);
         getContext().getContentResolver().query(Contract.Entry.CONTENT_URI, null, null, null,null);
 
+        textView = (TextView)rootView.findViewById(R.id.empty_viewFav);
         ListView listViewFav=(ListView)rootView.findViewById(R.id.listViewFav);
         adapter = new FavAdapter(getContext(), null);
         listViewFav.setAdapter(adapter);
@@ -34,6 +37,9 @@ public class FavoriteNewsFragment extends Fragment implements LoaderManager.Load
 
             }
         });
+
+        listViewFav.setEmptyView(textView);
+        textView.setText("No saved articles");
 
         getLoaderManager().initLoader(LOADER, null, this).forceLoad();
         return rootView;
