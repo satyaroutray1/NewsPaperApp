@@ -3,9 +3,12 @@ Newspaper app
 
 [![Join the chat at https://gitter.im/NewsPaperAppSR/community](https://badges.gitter.im/NewsPaperAppSR/community.svg)](https://gitter.im/NewsPaperAppSR/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-
-It fetches latest news. 
-It allows user to save articles to read later and  also has option to block the news from the source they do not want to see.
+Features
+--------
+- fetches latest news. 
+- allows user to save articles to read later
+- has option to block the news from the source they do not want to see
+- user can share the news article via various available apps
 
 Screenshots
 -----------
@@ -22,7 +25,9 @@ Updates on project
 -------------------
 17/08/2019</br>
 Shows error message when internet connection is not there. App used to crash when opened without internet.</br>
-Displays a message when there are no saved articles in favourite section.
+Displays a message when there are no saved articles in favourite section.</br>
+19/08/2019</br>
+User can share the news article on various available apps 
 
 Link to download the app from app store
 ---------------------------------------
