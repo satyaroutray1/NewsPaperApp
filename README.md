@@ -23,3 +23,7 @@ Updates on project
 17/08/2019</br>
 Shows error message when internet connection is not there. App used to crash when opened without internet.</br>
 Displays a message when there are no saved articles in favourite section.
+
+Link to download the app from app store
+---------------------------------------
+https://www.amazon.com/dp/B07WR83XRC/ref=apps_sf_sta
