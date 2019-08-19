@@ -2,6 +2,7 @@ package com.example.android.viewpager;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
@@ -18,9 +19,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.android.viewpager.Data.Contract.Entry;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,25 +79,25 @@ public class NewsAdapter extends ArrayAdapter<News> {
             holder = (ViewHolder) listItemView.getTag();
         }
 
-        News latestNews = getItem(position);
+        final News latestNews = getItem(position);
 
-        imageView =(ImageView)listItemView.findViewById(R.id.img);
+        imageView = listItemView.findViewById(R.id.img);
         Glide.with(getContext()).load(latestNews.getImg()).into(holder.item_img_news);
         //imageView.setImageBitmap(latestNews.getImg());
 
-        article = (TextView)listItemView.findViewById(R.id.article);
+        article = listItemView.findViewById(R.id.article);
         article.setText(latestNews.getArticle());
 
-        time= (TextView)listItemView.findViewById(R.id.time);
+        time = listItemView.findViewById(R.id.time);
         time.setText(latestNews.getTime());
 
-        newspaperName = (TextView)listItemView.findViewById(R.id.newspaperName);
+        newspaperName = listItemView.findViewById(R.id.newspaperName);
         newspaperName.setText(latestNews.getNewspaperName());
 
-        urlLink= (TextView)listItemView.findViewById(R.id.urlLink);
+        urlLink = listItemView.findViewById(R.id.urlLink);
         urlLink.setText(latestNews.getUrlLink());
 
-        final ImageView opt = (ImageView)listItemView.findViewById(R.id.opt);
+        final ImageView opt = listItemView.findViewById(R.id.opt);
         final View finalListItemView = listItemView;
         opt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,11 +132,21 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
                                 return true;
                             case R.id.share:
+
+                                Intent sendIntent = new Intent();
+
+                                sendIntent.setAction(Intent.ACTION_SEND);
+                                sendIntent.putExtra(Intent.EXTRA_TEXT, "Check this from my favourite News Source. " + latestNews.getUrlLink() + " Download the app at urlzs.com/hBnvY");
+                                sendIntent.setType("text/plain");
+                                //sendIntent.setPackage("com.whatsapp"); //to share only on whatspp
+                                getContext().startActivity(Intent.createChooser(sendIntent, "Share with friends via"));
+
+
                                 return true;
                             case R.id.blockSite:
                                 mStringList = new ArrayList<>();
                                 stringBuilder = new StringBuilder();
-                                TextView newspaperName=(TextView) finalListItemView.findViewById(R.id.newspaperName);
+                                TextView newspaperName = finalListItemView.findViewById(R.id.newspaperName);
                                 block = newspaperName.getText().toString().trim();
                                 mStringList.add(block);
                                 Log.e("ooo",""+getList());
