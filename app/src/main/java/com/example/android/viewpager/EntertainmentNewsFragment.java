@@ -40,10 +40,11 @@ public class EntertainmentNewsFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView tv = (TextView)view.findViewById(R.id.urlLink);
                 String urlLink = tv.getText().toString();
-                Toast.makeText(getContext(), ""+urlLink, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), ""+urlLink, Toast.LENGTH_SHORT).show();
 
                 Uri uri = Uri.parse(urlLink); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                Intent intent = new Intent(getContext(), WebViewActivity.class);
+                intent.putExtra("url", uri.toString());
                 startActivity(intent);
             }
         });

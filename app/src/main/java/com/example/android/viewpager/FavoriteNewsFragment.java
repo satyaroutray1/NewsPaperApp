@@ -1,6 +1,8 @@
 package com.example.android.viewpager;
 
+import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.viewpager.Data.Contract;
 
@@ -34,7 +37,14 @@ public class FavoriteNewsFragment extends Fragment implements LoaderManager.Load
         listViewFav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView tv = (TextView) view.findViewById(R.id.urlLinkFav);
+                String urlLink = tv.getText().toString();
+               // Toast.makeText(getContext(), "" + urlLink, Toast.LENGTH_SHORT).show();
 
+                Uri uri = Uri.parse(urlLink); // missing 'http://' will cause crashed
+                Intent intent = new Intent(getContext(), WebViewActivity.class);
+                intent.putExtra("url", uri.toString());
+                startActivity(intent);
             }
         });
 

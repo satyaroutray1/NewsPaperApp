@@ -34,11 +34,11 @@ public class FavAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View view, final Context context, Cursor cursor) {
-        TextView articleFav = (TextView)view.findViewById(R.id.article);
-        newspaperNameFav = (TextView)view.findViewById(R.id.newspaperName);
-        TextView timeFav = (TextView)view.findViewById(R.id.time);
-        TextView urlLinkFav = (TextView)view.findViewById(R.id.urlLink);
-        TextView rowFav = (TextView)view.findViewById(R.id.row);
+        TextView articleFav = (TextView)view.findViewById(R.id.articleFav);
+        newspaperNameFav = (TextView)view.findViewById(R.id.newspaperNameFav);
+        TextView timeFav = (TextView)view.findViewById(R.id.timeFav);
+        TextView urlLinkFav = (TextView)view.findViewById(R.id.urlLinkFav);
+        TextView rowFav = (TextView)view.findViewById(R.id.rowFav);
 
         int idPos = cursor.getColumnIndex(Contract.Entry._ID);
         String idValue = cursor.getString(idPos);
@@ -64,7 +64,7 @@ public class FavAdapter extends CursorAdapter {
 
         final int r = Integer.parseInt(rowFav.getText().toString());
         /*all news page menu */
-        final ImageView opt = (ImageView)view.findViewById(R.id.opt);
+        final ImageView opt = (ImageView)view.findViewById(R.id.optFav);
         opt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
@@ -79,13 +79,10 @@ public class FavAdapter extends CursorAdapter {
                         switch (item.getItemId()) {
 
                             case R.id.unsave:
-                                //TextView newspaperName=(TextView) view.findViewById(R.id.newspaperName);
-                                Toast.makeText(context,""+newspaperNameFav.getText().toString(),Toast.LENGTH_SHORT).show();
 
                                 context.getContentResolver().delete(Contract.Entry.CONTENT_URI, Contract.Entry._ID +"=?", new String[]{String.valueOf(r)});
                                 Toast.makeText(context, "removed from favorite", Toast.LENGTH_SHORT).show();
 
-                                //get it by adding textview for rows
                                 return true;
                         }
                         return true;

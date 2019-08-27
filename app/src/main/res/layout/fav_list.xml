@@ -12,7 +12,7 @@
         android:paddingLeft="8dp">
 
         <TextView
-            android:id="@+id/article"
+            android:id="@+id/articleFav"
             android:paddingLeft="16dp"
             android:paddingRight="8dp"
             android:layout_width="0dp"
@@ -23,12 +23,13 @@
             android:lineSpacingExtra="4dp"
             android:textSize="16sp"/>
         <ImageView
-            android:id="@+id/img"
+            android:id="@+id/imgFav"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:paddingRight="16dp"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:visibility="gone"/>
 
     </LinearLayout>
     <LinearLayout
@@ -38,8 +39,7 @@
         android:orientation="horizontal"
         android:paddingRight="0dp">
         <TextView
-            android:id="@+id/time"
-
+            android:id="@+id/timeFav"
             android:layout_width="0dp"
             android:layout_weight="3"
             android:layout_height="match_parent"
@@ -48,7 +48,7 @@
             android:layout_gravity="right"
             android:paddingLeft="16dp"/>
         <TextView
-            android:id="@+id/newspaperName"
+            android:id="@+id/newspaperNameFav"
             android:layout_width="0dp"
             android:layout_weight="4"
             android:layout_height="match_parent"
@@ -58,7 +58,7 @@
             android:textAlignment="viewEnd"
             android:textStyle="italic" />
         <ImageView
-            android:id="@+id/opt"
+            android:id="@+id/optFav"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
@@ -66,13 +66,13 @@
             android:paddingTop="16dp"/>
     </LinearLayout>
     <TextView
-        android:id="@+id/urlLink"
+        android:id="@+id/urlLinkFav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="link"
         android:visibility="gone"/>
     <TextView
-        android:id="@+id/row"
+        android:id="@+id/rowFav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"/>

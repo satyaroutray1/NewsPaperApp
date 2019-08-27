@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LatestNewsFragment extends Fragment {
@@ -36,7 +37,9 @@ public class LatestNewsFragment extends Fragment {
 
             tabLayout.setupWithViewPager(viewPager2);
         }else {
-            //Toast.makeText(getContext(), "t", Toast.LENGTH_SHORT).show();
+            TextView textView = (TextView)rootView.findViewById(R.id.error);
+            textView.setVisibility(View.VISIBLE);
+            textView.setText("No internet connection");
         }
         return rootView;
     }

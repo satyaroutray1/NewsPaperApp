@@ -3,11 +3,13 @@ package com.example.android.viewpager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,11 +27,12 @@ public class HeadlinesFragment extends Fragment {
     private NewsAdapter mNewsAdapter;
     private TextView mEmptyStateTextView;
 
+
     private static final String REQUEST_URL ="https://newsapi.org/v2/top-headlines?country=in&apiKey=" + MainActivity.API_KEY;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_headlines, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_business_news, container, false);
 
         ListView listView = (ListView) rootView.findViewById(R.id.listView);
 
@@ -49,12 +52,16 @@ public class HeadlinesFragment extends Fragment {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    TextView textView =(TextView)view.findViewById(R.id.article);
+                    textView.getTextSize();
+
                     TextView tv = (TextView) view.findViewById(R.id.urlLink);
                     String urlLink = tv.getText().toString();
-                    Toast.makeText(getContext(), "" + urlLink, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "" + urlLink, Toast.LENGTH_SHORT).show();
 
                     Uri uri = Uri.parse(urlLink); // missing 'http://' will cause crashed
-                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    Intent intent = new Intent(getContext(), WebViewActivity.class);
+                    intent.putExtra("url", uri.toString());
                     startActivity(intent);
                 }
             });
@@ -66,6 +73,13 @@ public class HeadlinesFragment extends Fragment {
         }
         return rootView;
     }
+    /*public void getPrefSavedTextSize(){
+        SharedPreferences sharedPreferences1 = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        SharedPreferences.Editor editor = sharedPreferences1.edit();
+
+        int a = sharedPreferences1.getInt("textSize", 0);
+        Toast.makeText(getActivity(),"HF: "+a,Toast.LENGTH_SHORT).show();
+    }*/
 
     private class NewsAsyncTask extends AsyncTask<String, Void, ArrayList<News>> {
         ProgressDialog p;
@@ -82,12 +96,12 @@ public class HeadlinesFragment extends Fragment {
             Log.e("BLOCK LIST", " "+ list);
 
             if (list != null) {
-                for (int k = 0; k < result.size(); k++) {
+                for (int k = 0; k < result.size()-1; k++) {
                     String[] names = new String[list.size()];
                     for (int i = 0; i < list.size(); i++) {
                         names[i] = list.get(i);
                     }
-                    for (int j = 0; j < names.length; j++) {
+                    for (int j = 0; j < names.length-1; j++) {
                         if (result.get(k).getNewspaperName().contains(names[j])) {
                             result.remove(k);
                             Log.e("notice ", ""+names[j]+" is removed");

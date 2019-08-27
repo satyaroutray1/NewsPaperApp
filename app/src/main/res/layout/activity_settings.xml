@@ -5,10 +5,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".settings">
-    <TextView
-        android:id="@+id/textView"
+    tools:context=".settings"
+    android:orientation="vertical"
+    android:layout_margin="10dp">
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Appearance"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/fontSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Article font Size"
+                android:textSize="16sp"
+                android:padding="10dp"/>
+            <ImageView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:src="@android:drawable/divider_horizontal_bright"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/imageSidePref"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Show images on which side"
+                android:padding="10dp"
+                android:textSize="16sp"/>
+            <ImageView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:src="@android:drawable/divider_horizontal_bright"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="General"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/blockedSources"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sources you have blocked"
+                android:padding="10dp"
+                android:textSize="16sp"/>
+            <ImageView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:src="@android:drawable/divider_horizontal_bright"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY" />
+          <!--  <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Topics you don't want to see"
+                android:padding="10dp"
+                android:textSize="16sp"/>-->
+            <ImageView
+                android:src="@android:drawable/divider_horizontal_bright"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY" />
+            <TextView
+                android:id="@+id/reset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reset the app"
+                android:padding="10dp"
+                android:textSize="16sp"/>
+            <ImageView
+                android:src="@android:drawable/divider_horizontal_bright"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY" />
+            <TextView
+                android:id="@+id/feedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send Feedback"
+                android:padding="10dp"
+                android:textSize="16sp"/>
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>

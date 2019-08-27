@@ -1,7 +1,10 @@
 package com.example.android.viewpager;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,6 +23,8 @@ import java.util.ArrayList;
 public class HealthNewsFragment extends Fragment {
     private ArrayList urlList;
     private NewsAdapter mNewsAdapter;
+    private TextView mEmptyStateTextView;
+
 
     private static final String REQUEST_URL ="https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=" + MainActivity.API_KEY;
 
@@ -27,26 +32,40 @@ public class HealthNewsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_business_news, container, false);
 
-        HealthNewsFragment.NewsAsyncTask task = new HealthNewsFragment.NewsAsyncTask();
-        task.execute(REQUEST_URL);
-
         ListView listView = (ListView) rootView.findViewById(R.id.listView);
+        ConnectivityManager connMgr = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        mNewsAdapter = new NewsAdapter(getContext(), new ArrayList<News>());
-        listView.setAdapter(mNewsAdapter);
+        // Get details on the currently active default data network
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView tv = (TextView)view.findViewById(R.id.urlLink);
-                String urlLink = tv.getText().toString();
-                Toast.makeText(getContext(), ""+urlLink, Toast.LENGTH_SHORT).show();
+        // If there is a network connection, fetch data
+        if (networkInfo != null && networkInfo.isConnected()) {
+            HealthNewsFragment.NewsAsyncTask task = new HealthNewsFragment.NewsAsyncTask();
+            task.execute(REQUEST_URL);
 
-                Uri uri = Uri.parse(urlLink); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
-        });
+            mNewsAdapter = new NewsAdapter(getContext(), new ArrayList<News>());
+            listView.setAdapter(mNewsAdapter);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    TextView tv = (TextView)view.findViewById(R.id.urlLink);
+                    String urlLink = tv.getText().toString();
+                    //Toast.makeText(getContext(), ""+urlLink, Toast.LENGTH_SHORT).show();
+
+                    Uri uri = Uri.parse(urlLink); // missing 'http://' will cause crashed
+                    Intent intent = new Intent(getContext(), WebViewActivity.class);
+                    intent.putExtra("url", uri.toString());
+                    startActivity(intent);
+                }
+            });
+        }else {
+            mEmptyStateTextView = (TextView) rootView.findViewById(R.id.empty_view);
+            listView.setEmptyView(mEmptyStateTextView);
+
+            mEmptyStateTextView.setText("No internet connection");
+        }
+
         return rootView;
     }
 

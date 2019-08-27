@@ -120,17 +120,23 @@ public class QueryUtils {
                 news1.setImg(jsonObject.optString("urlToImage"));
                 news1.setUrlLink(jsonObject.optString("url"));
 
-
                 String dateStr = jsonObject.optString("publishedAt");
+
+                Log.e("actual date: ", dateStr );
 
 //Converting time to time ago format
                 String convTime = null;
                 String prefix = "";
                 String suffix = "Ago";
+                String actualDate = null;
 
                 try {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
                     Date pasTime = dateFormat.parse(dateStr);
+
+                    actualDate = "#"+pasTime.toString().split(" ")[1] + " " +
+                            pasTime.toString().split(" ")[2] + ", " + pasTime.toString().split(" ")[5];
+                    //Log.e("actual date: ", ""+ actualDate);
 
                     Date nowTime = new Date();
 
@@ -163,7 +169,7 @@ public class QueryUtils {
                     Log.e("ConvTimeE", e.getMessage());
                 }
 
-                news1.setTime(convTime);
+                news1.setTime(convTime+actualDate);
 
                 news.add(news1);
                 urlList.add(url1);
