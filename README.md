@@ -27,7 +27,11 @@ Updates on project
 Shows error message when internet connection is not there. App used to crash when opened without internet.</br>
 Displays a message when there are no saved articles in favourite section.</br>
 19/08/2019</br>
-User can share the news article on various available apps 
+User can share the news article on various available apps </br>
+27/08/2019</br>
+Option to customise the app like changing the text size or changing which side the article image should display.</br>
+Options to unblock the blocked news source.</br>
+Saved articles show actual date of publish.</br>
 
 Link to download the app from app store
 ---------------------------------------
