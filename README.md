@@ -12,7 +12,7 @@ Features
 
 Screenshots
 -----------
-<img src="https://user-images.githubusercontent.com/13520859/60967999-9df42f80-a339-11e9-89a8-6762b358b66e.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/13520859/60968000-9df42f80-a339-11e9-8fdf-fd940c250cae.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/13520859/60968001-9df42f80-a339-11e9-97cc-08c4209a9aa1.png" width="30%"></img> 
+<img src="https://user-images.githubusercontent.com/13520859/63829769-051c8080-c988-11e9-8be9-93cb2687215b.png" width="23%"></img> <img src="https://user-images.githubusercontent.com/13520859/63829770-051c8080-c988-11e9-88a3-f8fe60e4e3e6.png" width="23%"></img> <img src="https://user-images.githubusercontent.com/13520859/63829771-05b51700-c988-11e9-84c6-39609ced1fd8.png" width="23%"></img> <img src="https://user-images.githubusercontent.com/13520859/63829796-19607d80-c988-11e9-8364-681ea956ae6e.png" width="23%"></img> 
 
 Installation steps
 ------------------
